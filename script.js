@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Reveal Animations on Scroll ---
     const revealElements = document.querySelectorAll('.reveal');
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hero.addEventListener('mousemove', (e) => {
             const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
             const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            
+
             heroBg.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
     }
@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             formStatus.style.display = 'block';
             formStatus.textContent = 'Enviando...';
             formStatus.className = '';
-
+            //
             // Simulate a network delay
             setTimeout(() => {
                 formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado con éxito (Simulación local).';
