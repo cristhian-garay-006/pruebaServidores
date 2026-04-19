@@ -92,10 +92,32 @@
 
     <section id="contacto">
         <div class="container">
-            <div class="glass-card reveal" style="text-align: center; padding: 5rem 2rem;">
-                <h2 style="font-size: 3rem; margin-bottom: 2rem;">¿Listo para redefinir tu futuro?</h2>
-                <p style="margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Estamos buscando socios que compartan nuestra pasión por la innovación y la excelencia.</p>
-                <a href="mailto:hola@tuempresa.com" class="btn btn-primary">Iniciar Conversación</a>
+            <div class="glass-card reveal" style="max-width: 800px; margin: 0 auto; padding: 4rem 3rem;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">¿Listo para redefinir tu futuro?</h2>
+                    <p style="color: var(--text-muted);">Estamos buscando socios que compartan nuestra pasión por la innovación. Déjanos un mensaje.</p>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="¿En qué podemos ayudarte?"></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-primary" style="width: 200px;">Enviar Mensaje</button>
+                    </div>
+                </form>
+                <div id="formStatus" style="margin-top: 2rem; text-align: center; display: none;"></div>
             </div>
         </div>
     </section>

@@ -57,4 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.background = 'rgba(5, 5, 5, 0.7)';
         }
     });
+
+    // --- Form Submission (AJAX) ---
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            formStatus.style.display = 'block';
+            formStatus.textContent = 'Enviando...';
+            formStatus.className = '';
+
+            try {
+                const response = await fetch('process.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                formStatus.textContent = result.message;
+                formStatus.className = result.status;
+
+                if (result.status === 'success') {
+                    contactForm.reset();
+                }
+            } catch (error) {
+                console.error('Error en el envío:', error);
+                formStatus.textContent = 'Ocurrió un error inesperado.';
+                formStatus.className = 'error';
+            }
+        });
+    }
 });
