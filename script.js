@@ -63,33 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const formStatus = document.getElementById('formStatus');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const formData = new FormData(contactForm);
             formStatus.style.display = 'block';
             formStatus.textContent = 'Enviando...';
             formStatus.className = '';
 
-            try {
-                const response = await fetch('process.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                formStatus.textContent = result.message;
-                formStatus.className = result.status;
-
-                if (result.status === 'success') {
-                    contactForm.reset();
-                }
-            } catch (error) {
-                console.error('Error en el envío:', error);
-                formStatus.textContent = 'Ocurrió un error inesperado.';
-                formStatus.className = 'error';
-            }
+            // Simulate a network delay
+            setTimeout(() => {
+                formStatus.textContent = '¡Gracias! Tu mensaje ha sido enviado con éxito (Simulación local).';
+                formStatus.className = 'success';
+                contactForm.reset();
+            }, 1500);
         });
     }
 });
